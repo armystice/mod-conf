@@ -1,0 +1,10 @@
+[global]
+    update every = 3
+
+[ml]
+    enabled = false
+
+[web]
+    enable gzip compression = no
+
+

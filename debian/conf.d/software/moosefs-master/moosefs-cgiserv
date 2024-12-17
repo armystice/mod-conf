@@ -1,0 +1,21 @@
+# Defaults for moosefs-cgiserv
+# mfscgiserv(8)
+#
+
+## user to run daemon as (default: nobody)
+# MFSCGISERV_USER=nobody
+
+## group to run daemon as (default: nogroup)
+# MFSCGISERV_GROUP=nogroup
+
+## local address to listen on (default: any)
+# BIND_HOST=localhost
+
+## port to listen on (default: 9425)
+# BIND_PORT=9425
+
+## local path to use as HTTP document root (default: /usr/share/mfscgi)
+# ROOT_PATH=/usr/share/moosefs-cgi
+
+DAEMON_OPTS=""
+MFSCGISERV_ENABLE=true

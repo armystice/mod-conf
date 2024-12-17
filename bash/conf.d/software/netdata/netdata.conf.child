@@ -1,0 +1,15 @@
+[global]
+    update every = 3
+
+[ml]
+    enabled = false
+
+[web]
+    enable gzip compression = no
+
+[health]
+   enabled = no
+
+[db]
+  # dbengine (default), ram (the default if dbengine not available), alloc, none
+  mode = ram
