@@ -71,20 +71,12 @@ cp "${ETC_SYSCTL_CONF}" "/etc/sysctl.d/"
 systemctl restart systemd-sysctl
 
 # Logging
-apt-get -y install rsyslog
-
 echo "> Updating logging configuration..."
 
-RSYSLOG_SOURCE_DIR="${SCRIPTS_ETC_DIR}/rsyslog.d"
-RSYSLOG_TARGET_DIR=/etc/rsyslog.d
-copy_conf_d_files ${RSYSLOG_SOURCE_DIR} ${RSYSLOG_TARGET_DIR}
-systemctl restart rsyslog
-
-JOURNALD_SOURCE_DIR="${SCRIPTS_ETC_DIR}/journald.conf.d"
-JOURNALD_TARGET_DIR=/etc/journald.conf.d
-mkdir ${JOURNALD_TARGET_DIR} # Does not exist in default Debian installation
-copy_conf_d_files ${JOURNALD_SOURCE_DIR} ${JOURNALD_TARGET_DIR}
-systemctl restart systemd-journald
+# all.conf files are deprecated for rsyslog and journald
+rm /etc/rsyslog.d/23-all.conf
+rm /etc/journald.conf.d/23-all.conf
+source "${SCRIPT_DIR}/../conf.d/rsyslog/redirect_journald_to_rsyslog.sh"
 
 # Drivers/ Firmware
 apt-get -y install firmware-linux firmware-linux-free firmware-linux-nonfree firmware-misc-nonfree firmware-amd-graphics firmware-realtek

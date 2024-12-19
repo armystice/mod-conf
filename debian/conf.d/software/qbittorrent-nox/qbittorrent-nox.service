@@ -1,0 +1,16 @@
+[Unit]
+Description=qbittorrent-nox
+After=syslog.target
+After=network.target
+
+[Service]
+RestartSec=2s
+Type=simple
+User=qbittorrent-nox
+Group=qbittorrent-nox
+WorkingDirectory=/mnt/mfs/qbittorrent/$HOST
+ExecStart=/usr/bin/qbittorrent-nox -d --save-path=/mnt/mfs/qbittorrent/$HOST
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

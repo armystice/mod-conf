@@ -53,6 +53,7 @@ apt-get update
 apt-get -y install crowdsec
 cscli collections install crowdsecurity/linux
 cscli collections install crowdsecurity/linux-lpe
+cscli collections install crowdsecurity/apiscp
 cscli collections install crowdsecurity/base-http-scenarios
 cscli collections install crowdsecurity/appsec-generic-rules
 cscli collections install crowdsecurity/auditd
