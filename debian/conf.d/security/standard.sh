@@ -71,7 +71,7 @@ cscli collections install crowdsecurity/teamspeak3
 cscli collections install crowdsecurity/whitelist-good-actors
 cscli collections install crowdsecurity/wireguard
 cscli collections install crowdsecurity/caddy
-sudo apt install crowdsec-firewall-bouncer-iptables
+apt-get install -y crowdsec-firewall-bouncer-iptables
 
 systemctl restart crowdsec
 
