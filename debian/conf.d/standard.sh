@@ -139,5 +139,15 @@ echo "Updating Power Management packages..."
 echo "====================================="
 apt-get -y install linux-cpupower linux-perf tlp
 
+# Security
+apt-get -y install debian-security-support needrestart debsecan debsums fail2ban libpam-tmpdir apparmor
+systemctl stop rsync
+systemctl disable rsync
+
 # Utilities
 apt-get -y install curl
+
+# Debloat
+apt-get -y remove cups
+apt-get -y autoremove
+apt-get -y autopurge

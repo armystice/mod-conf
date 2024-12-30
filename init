@@ -1,0 +1,8 @@
+#!/bin/bash
+SCRIPT_FILE=$(readlink -f ${BASH_SOURCE[0]})
+SCRIPT_DIR=$(dirname ${SCRIPT_FILE})
+
+# Bash mods always init 
+source "${HOME}/.armystice/mod/armystice-mod-bash/init"
+
+ln -s "${ARMYSTICE_MOD_HOME}/armystice-conf" > "${ARMYSTICE_SHORTCUTS_DIR}/conf"
