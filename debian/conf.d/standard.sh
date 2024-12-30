@@ -79,7 +79,7 @@ echo "> Updating logging configuration..."
 # all.conf files are deprecated for rsyslog and journald
 rm /etc/rsyslog.d/23-all.conf
 rm /etc/journald.conf.d/23-all.conf
-source "${SCRIPT_DIR}/../conf.d/rsyslog/redirect_journald_to_rsyslog.sh"
+source "${SCRIPT_DIR}/software/conf.d/rsyslog/redirect_journald_to_rsyslog.sh"
 
 # Drivers/ Firmware
 apt-get -y install firmware-linux firmware-linux-free firmware-linux-nonfree firmware-misc-nonfree firmware-amd-graphics firmware-realtek
