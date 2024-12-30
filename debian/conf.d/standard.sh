@@ -66,7 +66,7 @@ if [ -z "${SYSCTL_CONF_FILENAME}" ]; then
 fi
 
 # APT
-${SCRIPT_DIR}/software/apt/install-default-sources.sh
+bash ${SCRIPT_DIR}/software/apt/install-default-sources.sh
 
 # Kernel Parameters
 ETC_SYSCTL_CONF="${SCRIPT_DIR}/../../../debian/etc/sysctl.d//${SYSCTL_CONF_FILENAME}"
