@@ -42,7 +42,7 @@ apt-get -y autopurge
 # Install Anti-malware tools
 apt-get -y install clamdscan clamav-daemon clamav-freshclam rkhunter
 
-source "${SCRIPT_DIR}/../fixes/clamd_highram_fix.sh"
+source "${SCRIPT_DIR}/../fixes/clamd_highram_fixes.sh"
 
 systemctl enable clamav-daemon
 systemctl restart clamav-daemon # Restart in case fixes were applied
