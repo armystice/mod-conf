@@ -1,4 +1,6 @@
 #!/bin/bash
+MOD_CONF_DEB="${HOME}/.armystice/mod/mod-conf/debian/"
+
 echo "$ $(basename $(readlink -f ${BASH_SOURCE[0]}))..."
 
 apt-get -y install debian-security-support needrestart debsecan debsums fail2ban libpam-tmpdir apparmor
@@ -39,8 +41,10 @@ apt-get -y autopurge
 # Install Anti-malware tools
 apt-get -y install clamdscan clamav-daemon clamav-freshclam rkhunter
 
+source "${MOD_CONF_DEB}/conf.d/fixes/clamd_highram_fix.sh"
+
 systemctl enable clamav-daemon
-systemctl start clamav-daemon
+systemctl restart clamav-daemon # Restart in case fixes were applied
 
 # Uses excessive CPU and the service has failed to start in 2023/2024
 systemctl disable clamav-clamonacc.service
@@ -119,7 +123,13 @@ chown -c root:root /etc/sudoers.d/*
 chmod -c 0440 /etc/sudoers.d/*
 
 # Only allow root to use compilers
-chmod o-rx /usr/bin/gcc
-chmod o-rx /usr/bin/gcc*
-chmod o-rx /usr/bin/g++
-chmod o-rx /usr/bin/g++*
+# chmod o-rx /usr/bin/gcc
+# chmod o-rx /usr/bin/gcc*
+# chmod o-rx /usr/bin/g++
+# chmod o-rx /usr/bin/g++*
+
+# Undone (too restrictive in some configurations)
+chmod o+rx /usr/bin/gcc
+chmod o+rx /usr/bin/gcc*
+chmod o+rx /usr/bin/g++
+chmod o+rx /usr/bin/g++*
