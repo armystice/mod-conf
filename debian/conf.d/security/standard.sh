@@ -1,5 +1,6 @@
 #!/bin/bash
-MOD_CONF_DEB="${HOME}/.armystice/mod/mod-conf/debian/"
+SCRIPT_FILE=$(readlink -f ${BASH_SOURCE[0]})
+SCRIPT_DIR=$(dirname ${SCRIPT_FILE})
 
 echo "$ $(basename $(readlink -f ${BASH_SOURCE[0]}))..."
 
@@ -41,7 +42,7 @@ apt-get -y autopurge
 # Install Anti-malware tools
 apt-get -y install clamdscan clamav-daemon clamav-freshclam rkhunter
 
-source "${MOD_CONF_DEB}/conf.d/fixes/clamd_highram_fix.sh"
+source "${SCRIPT_DIR}/../fixes/clamd_highram_fix.sh"
 
 systemctl enable clamav-daemon
 systemctl restart clamav-daemon # Restart in case fixes were applied
