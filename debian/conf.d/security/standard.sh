@@ -40,17 +40,18 @@ apt-get -y autoremove
 apt-get -y autopurge
 
 # Install Anti-malware tools
-apt-get -y install clamdscan clamav-daemon clamav-freshclam rkhunter
+apt-get -y install clamdscan clamav-freshclam rkhunter
 
-source "${SCRIPT_DIR}/../fixes/clamd_highram_fixes.sh"
-
-systemctl enable clamav-daemon
-systemctl restart clamav-daemon # Restart in case fixes were applied
+# 2025/01/11: ClamAV daemon removed because of excessive CPU and RAM usage
+apt-get -y remove clamav-daemon
+# source "${SCRIPT_DIR}/../fixes/clamd_highram_fixes.sh"
+# systemctl enable clamav-daemon
+# systemctl restart clamav-daemon # Restart in case fixes were applied
 
 # Uses excessive CPU and the service has failed to start in 2023/2024
 systemctl disable clamav-clamonacc.service
 
-echo "0 6 * * 1,3,6 root /usr/bin/clamdscan --fdpass -i /* > /var/log/clamav/clamdscan_scheduled.$(date +%Y%M%d).log" | sudo tee /etc/cron.d/clamdscan_scheduled
+echo "0 6 * * 1,3,6 root /usr/bin/clamscan -i /* > /var/log/clamav/clamdscan_scheduled.$(date +%Y%M%d).log" | sudo tee /etc/cron.d/clamdscan_scheduled
 
 # Install IDS/ IPS tools
 curl -s https://install.crowdsec.net | sudo sh
