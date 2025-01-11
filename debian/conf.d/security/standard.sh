@@ -51,7 +51,7 @@ apt-get -y remove clamav-daemon
 # Uses excessive CPU and the service has failed to start in 2023/2024
 systemctl disable clamav-clamonacc.service
 
-echo "0 6 * * 1,3,6 root /usr/bin/clamscan -i /* > /var/log/clamav/clamdscan_scheduled.$(date +%Y%M%d).log" | sudo tee /etc/cron.d/clamdscan_scheduled
+echo "0 6 * * 1,3,6 root /usr/bin/freshclam; /usr/bin/clamscan -i /* > /var/log/clamav/clamdscan_scheduled.$(date +%Y%M%d).log" | sudo tee /etc/cron.d/clamdscan_scheduled
 
 # Install IDS/ IPS tools
 curl -s https://install.crowdsec.net | sudo sh
