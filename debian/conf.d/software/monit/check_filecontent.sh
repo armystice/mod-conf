@@ -7,7 +7,7 @@ if [ ! -f "${FILE_TO_CHECK}" ]; then
    exit 1
 fi
 
-FILE_CONTENTS=$(/usr/bin/cat $VALUE $FILE_TO_CHECK)
+FILE_CONTENTS=$(/usr/bin/cat $FILE_TO_CHECK)
 echo "${FILE_CONTENTS}"
 if [ "${FILE_CONTENTS}" == "${VALUE}" ]; then
     exit 0
