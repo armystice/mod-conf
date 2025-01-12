@@ -10,6 +10,7 @@ echo -e "If you have not done so already, please run:
 2) service monit restart"
 
 cp ${SCRIPT_DIR}/check_filecontent.sh /usr/local/bin/
+chmod +x /usr/local/bin/check_filecontent.sh
 
 cp ${SCRIPT_DIR}/armystice.conf /etc/monit/conf.d/armystice.conf
 service monit restart
