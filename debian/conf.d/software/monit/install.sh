@@ -10,7 +10,6 @@ echo -e "If you have not done so already, please run:
 cp ${SCRIPT_DIR}/armystice.conf /etc/monit/conf.d/armystice.conf
 service monit restart
 
-export POST_INSTALL_NOTES="${POST_INSTALL_NOTES}
-monit: 
-- If you have ufw please do (change 10.2.0.0/16 to your network): 
-  ufw allow from 10.2.0.0/16 to 10.2.0.0/16 port 5199 proto tcp comment \"monitorix\""
+echo "If you have ufw please run the following: 
+    # README: Change 10.2.0.0/16 to your network
+    ufw allow from 10.2.0.0/16 to 10.2.0.0/16 port 5199 proto tcp comment \"monitorix\"" > ~/.armystice/var/messages.monit

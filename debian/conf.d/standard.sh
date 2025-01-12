@@ -8,8 +8,6 @@ SCRIPTS_ETC_DIR=$(readlink -f "${SCRIPT_DIR}/../../../debian/etc")
 export CYCLERMAGIC_CONF_ROOT="${HOME}/.cyclermagic/settings"
 mkdir -p "${CYCLERMAGIC_CONF_ROOT}"
 
-export POST_INSTALL_NOTES=""
-
 # Functions
 function copy_conf_d_files() {
     SOURCE_D_DIR=$1
@@ -159,5 +157,3 @@ bash "${SCRIPT_DIR}/software/monit/install.sh"
 apt-get -y remove cups
 apt-get -y autoremove
 apt-get -y autopurge
-
-echo "${POST_INSTALL_NOTES}"
