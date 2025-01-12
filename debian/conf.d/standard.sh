@@ -150,7 +150,12 @@ systemctl disable rsync
 # Utilities
 apt-get -y install curl
 
+# Monitoring
+source "${SCRIPT_DIR}/software/monit/install.sh"
+
 # Debloat
 apt-get -y remove cups
 apt-get -y autoremove
 apt-get -y autopurge
+
+echo "${POST_INSTALL_NOTES}"
