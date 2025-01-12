@@ -12,6 +12,8 @@ fi
 apt install -y zstd
 modprobe -v zstd
 echo "zstd
-zswap enabled=1 zpool=zsmalloc compressor=zstd
+zswap
 " > /usr/share/initramfs-tools/modules.d/23_armystice_zstd
+echo 'GRUB_CMDLINE_LINUX_DEFAULT="${GRUB_CMDLINE_LINUX_DEFAULT} zswap.enabled=1 zswap.zpool=zsmalloc zswap.compressor=zstd"
+' > /etc/default/grub.d/armystice_zswap.cfg
 update-grub
