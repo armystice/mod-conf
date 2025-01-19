@@ -147,6 +147,9 @@ apt-get -y install debian-security-support needrestart debsecan debsums fail2ban
 systemctl stop rsync
 systemctl disable rsync
 
+# Privacy
+bash ${SCRIPT_DIR}/software/privacy.sexy/privacy.sexy.20250119.sh
+
 # Utilities
 apt-get -y install curl
 
